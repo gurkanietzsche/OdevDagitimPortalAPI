@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OdevDagitimPortalAPI", "OdevDagitimPortalAPI\OdevDagitimPortalAPI.csproj", "{13391C44-FAD5-4441-AD38-332E3A94C13D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13391C44-FAD5-4441-AD38-332E3A94C13D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13391C44-FAD5-4441-AD38-332E3A94C13D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13391C44-FAD5-4441-AD38-332E3A94C13D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13391C44-FAD5-4441-AD38-332E3A94C13D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A5062636-8DEA-4363-8174-2A60DE57C5CF}
+	EndGlobalSection
+EndGlobal
