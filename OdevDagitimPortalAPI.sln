@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35919.96 d17.13
+VisualStudioVersion = 17.13.35919.96
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OdevDagitimPortalAPI", "OdevDagitimPortalAPI\OdevDagitimPortalAPI.csproj", "{13391C44-FAD5-4441-AD38-332E3A94C13D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OdevDagitimPortalUI", "OdevDagitimPortalUI\OdevDagitimPortalUI.csproj", "{C5FFAE74-6A77-49E2-8667-2878499F5578}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{13391C44-FAD5-4441-AD38-332E3A94C13D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13391C44-FAD5-4441-AD38-332E3A94C13D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13391C44-FAD5-4441-AD38-332E3A94C13D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5FFAE74-6A77-49E2-8667-2878499F5578}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5FFAE74-6A77-49E2-8667-2878499F5578}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5FFAE74-6A77-49E2-8667-2878499F5578}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5FFAE74-6A77-49E2-8667-2878499F5578}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

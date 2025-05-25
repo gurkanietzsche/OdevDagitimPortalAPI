@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,6 +42,18 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.User.RequireUniqueEmail = true;
 });
 
+// CORS politikasýný JWT öncesinde tanýmlama
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
+    {
+        builder.WithOrigins("http://localhost:7174") // UI projenizin tam URL'si
+               .AllowAnyMethod()
+               .AllowAnyHeader()
+               .AllowCredentials();
+    });
+});
+
 //  JWT Authentication ekleme
 builder.Services.AddAuthentication(options =>
 {
@@ -62,6 +75,19 @@ builder.Services.AddAuthentication(options =>
         ValidAudience = builder.Configuration["JWT:ValidAudience"],
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]))
     };
+
+    // CORS ve JWT entegrasyonu
+    options.Events = new JwtBearerEvents
+    {
+        OnChallenge = context =>
+        {
+            context.HandleResponse();
+            context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+            context.Response.ContentType = "application/json";
+            context.Response.Headers.Append("Access-Control-Allow-Origin", "http://localhost:7174");
+            return context.Response.WriteAsync(JsonSerializer.Serialize(new { message = "Unauthorized" }));
+        }
+    };
 });
 
 // repository kayýtlarý
@@ -77,7 +103,6 @@ builder.Services.AddScoped<AuthService>();
 
 // Automapper baðlantýsý
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
-
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -110,19 +135,7 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll", builder =>
-    {
-        builder.AllowAnyOrigin()
-               .AllowAnyMethod()
-               .AllowAnyHeader();
-    });
-});
-
 var app = builder.Build();
-
 
 if (app.Environment.IsDevelopment())
 {
@@ -131,7 +144,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 
+// CORS middleware'i authentication ve authorization'dan ÖNCE çalýþtýrýn
 app.UseCors("AllowAll");
 
 app.UseAuthentication();
